@@ -1,0 +1,59 @@
+@import '../../styles/globalStyles.scss';
+
+.listDragons {
+    border: 1px solid $base-color;
+    padding: 0;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
+    padding: 16px;
+}
+
+.listDragonItem {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    padding: 8px 16px;
+    border-bottom: 1px solid $base-color;
+
+    & h3{
+        font-size: 16px;
+        margin: 0;
+        margin-bottom: 2px;
+        color: #000000DE;
+    }
+    & p {
+        margin: 0;
+        font-size: 14px;
+        color: #0000008A;
+    }
+
+    &:hover {
+        background-color: #0002;
+    }
+}
+
+.actionsContainer {
+    display: flex;
+    align-items: center;
+}
+
+.deleteButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-left: 8px;
+
+    &:hover {
+        background-color: #0003;
+    }
+
+    & svg {
+        width: 24px;
+        height: 24px;
+    }
+}

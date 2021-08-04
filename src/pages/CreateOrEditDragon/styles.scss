@@ -1,0 +1,16 @@
+.editButton {
+    background: none;
+    border: none;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+
+    &:hover {
+        background-color: #0003;
+    }
+    & svg {
+        width: 24px;
+        height: 24px;
+    }
+}
