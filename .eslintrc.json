@@ -24,18 +24,16 @@
         "@typescript-eslint/no-use-before-define": [
             "error"
         ],
-        "react/jsx-filename-extension": [
-            "warn",
+        "react/jsx-filename-extension": [1, { "extensions": ["ts", "tsx", ".js", ".jsx"] }],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
             {
-                "extensions": [
-                    ".tsx"
-                ]
+              "js": "never",
+              "jsx": "never",
+              "ts": "never",
+              "tsx": "never"
             }
-        ]
-    },
-    "settings": {
-        "import/resolver": {
-            "typescript": {}
-        }
+         ]
     }
 }

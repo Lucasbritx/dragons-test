@@ -1,7 +1,11 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable import/extensions */
 import React, { FC, useState } from 'react';
-import { MdClose } from 'react-icons/md';
+import { MdCheck, MdClose } from 'react-icons/md';
+import Button from '../../components/Button';
 import Modal from '../../components/Modal';
-import CreateOrEditDragon from '../CreateOrEditDragon';
+import EditDragon from '../../components/EditDragon';
 import './styles.scss';
 
 interface IDragon {
@@ -9,7 +13,6 @@ interface IDragon {
   name: string;
   createdAt: string;
   type: string;
-  histories: string[];
 }
 
 interface IListDragons {
@@ -22,7 +25,7 @@ const ListDragons: FC<IListDragons> = ({
   dragons,
   deleteDragon,
   editDragon,
-}) => {
+}: IListDragons) => {
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
   const [dragonId, setDragonId] = useState<number>();
 
@@ -31,42 +34,36 @@ const ListDragons: FC<IListDragons> = ({
     setConfirmDelete(false);
   };
 
-  const setDragonToDelete = (dragonId: number) => {
-    setDragonId(dragonId);
+  const setDragonToDelete = (dragonIdToDelete: number) => {
+    setDragonId(dragonIdToDelete);
     setConfirmDelete(true);
   };
 
   const renderModalConfirmDelete = () => (
     <Modal data-testid="delete-dragon-modal" show={confirmDelete} handleClose={() => setConfirmDelete(false)}>
-      <div className="container-confirm-action">
+      <div className="containerConfirmAction">
         <label>Deseja deletar esse dragão? </label>
-        <button data-testid="delete-dragon-confirm-button" onClick={() => deleteDragonAndCloseModal()}>Confirmar</button>
-        <button
-          onClick={() => setConfirmDelete(false)}
-        >
-          Cancelar
-        </button>
+        <div className="containerDeleteButtons">
+          <Button data-testid="delete-dragon-confirm-button" onClick={() => deleteDragonAndCloseModal()}><MdCheck /></Button>
+          <Button
+            onClick={() => setConfirmDelete(false)}
+          >
+            <MdClose />
+          </Button>
+        </div>
       </div>
     </Modal>
   );
 
-  const listDragons = () => dragons.map((dragon: IDragon, index: number) => (
+  const listDragons = () => dragons.map((dragon: IDragon) => (
     <li className="listDragonItem" key={dragon.id}>
-      <div
-        role="button"
-        tabIndex={0}
-            // onKeyPress={(e)=> handleKeypress(e, index)}
-        onClick={() => {
-          // renderModal(index);
-        }}
-        className="description"
-      >
+      <div>
         <h3>{dragon.name}</h3>
         <p>{dragon.type}</p>
       </div>
       <div className="actionsContainer">
-        <CreateOrEditDragon dragon={dragon} editDragon={editDragon} />
-        <button className="deleteButton" onClick={() => setDragonToDelete(dragon.id)}><MdClose /></button>
+        <EditDragon dragon={dragon} editDragon={editDragon} />
+        <Button className="deleteButton" onClick={() => setDragonToDelete(dragon.id)}><MdClose /></Button>
       </div>
     </li>
   ));

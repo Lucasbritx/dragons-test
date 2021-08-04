@@ -1,19 +1,23 @@
-import React, { FC, useState } from "react";
-import { MdSave } from "react-icons/md"
-import "./index.scss";
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+import React, { FC, useState } from 'react';
+import { MdSave } from 'react-icons/md';
+import Button from '../Button';
+import './index.scss';
 
-interface FormProps {
-  onSubmit: (event: any, histories: string[]) => void;
-  historiesDragon?: string[];
-  dragonName?: string;
-  typeDragon?: string;
+type FormProps = {
+  // eslint-disable-next-line no-unused-vars
+  onSubmit: (event: any) => void;
+  dragonName: string;
+  typeDragon: string;
 }
 
 const Form: FC<FormProps> = ({
+  // eslint-disable-next-line no-unused-vars
   onSubmit,
-  dragonName = "",
-  typeDragon = "",
-}) => {
+  dragonName = '',
+  typeDragon = '',
+}: FormProps) => {
   const [nameInput, setNameInput] = useState<string>(dragonName);
   const [typeInput, setTypeInput] = useState<string>(typeDragon);
 
@@ -22,8 +26,9 @@ const Form: FC<FormProps> = ({
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          setNameInput("");
-          setTypeInput("");
+          onSubmit(event);
+          setNameInput('');
+          setTypeInput('');
         }}
       >
         <div className="inputContainer">
@@ -53,9 +58,9 @@ const Form: FC<FormProps> = ({
             }}
           />
         </div>
-        <button className="submitButton" type="submit">
-          <MdSave/>
-        </button>
+        <Button className="submitButton" type="submit">
+          <MdSave />
+        </Button>
       </form>
     </>
   );

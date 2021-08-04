@@ -1,40 +1,43 @@
-import React, { FC, useEffect, useState } from "react";
-import api from "../../api/axios";
-import CreateOrEditDragon from "../CreateOrEditDragon";
-import ListDragons from "../ListDragons";
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+import React, { FC, useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import api from '../../api/axios';
+import CreateDragon from '../../components/CreateDragon';
+import ListDragons from '../ListDragons';
 import './styles.scss';
-import { toast, ToastContainer } from "react-toastify";
 
 interface IDragon {
   id: number;
   name: string;
   createdAt: string;
   type: string;
-  histories: string[];
 }
 
 const Home: FC = () => {
   const [dragons, setDragons] = useState<IDragon[]>([]);
+  // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState<boolean>(false);
 
-  const sortDragonsByName = (dgs: IDragon[]): IDragon[] => {
-    return dgs.sort(function (a: IDragon, b: IDragon) {
-      return a.name.toLowerCase() > b.name.toLowerCase()
-        ? 1
-        : b.name.toLowerCase() > a.name.toLowerCase()
+  const sortDragonsByName = (
+    dgs: IDragon[],
+  ): IDragon[] => dgs.sort((a: IDragon, b: IDragon) => (
+    // eslint-disable-next-line no-nested-ternary
+    a.name.toLowerCase()
+    > b.name.toLowerCase()
+      ? 1
+      : b.name.toLowerCase() > a.name.toLowerCase()
         ? -1
-        : 0;
-    });
-  };
+        : 0));
 
   const getDragons = async () => {
     try {
       setLoading(true);
-      const { data } = await api.get("");
+      const { data } = await api.get('');
       setDragons(sortDragonsByName(data));
       setLoading(false);
     } catch (error) {
-      toast.error("Erro ao carregar os dragões");
+      toast.error('Erro ao carregar os dragões');
       setDragons([]);
     }
   };
@@ -42,13 +45,14 @@ const Home: FC = () => {
   const createDragon = async (dragon: IDragon) => {
     try {
       setLoading(true);
-      const { data } = await api.post("", dragon);
+      const { data } = await api.post('', dragon);
       setDragons((prevState) => sortDragonsByName([...prevState, data]));
       setLoading(false);
-      toast.success("Dragão criado com sucesso");
+      toast.success('Dragão criado com sucesso');
       return data;
     } catch (error) {
-      toast.error("Erro ao criar o dragão");
+      toast.error('Erro ao criar o dragão');
+      return error;
     }
   };
 
@@ -56,25 +60,13 @@ const Home: FC = () => {
     try {
       setLoading(true);
       const edited = await api.put(`/${dragonId}`, dragon);
+      // eslint-disable-next-line no-unused-expressions
       edited
-        ? toast.success("Dragão editado com sucesso")
-        : toast.error("Erro ao editar o dragão");
+        ? toast.success('Dragão editado com sucesso')
+        : toast.error('Erro ao editar o dragão');
       getDragons();
     } catch (error) {
-      toast.error("Erro ao editar o dragão");
-    }
-  };
-
-  const deleteDragon = async (dragonId: number) => {
-    try {
-      setLoading(true);
-      const deleted = await api.delete(`/${dragonId}`);
-      deleted
-        ? toast.success("Dragão deletado com sucesso")
-        : toast.error("Erro ao deletar o dragão");
-      removeDragon(dragonId);
-    } catch (error) {
-      toast.error("Erro ao deletar o dragão");
+      toast.error('Erro ao editar o dragão');
     }
   };
 
@@ -85,6 +77,20 @@ const Home: FC = () => {
     setDragons([...newDragons]);
   };
 
+  const deleteDragon = async (dragonId: number) => {
+    try {
+      setLoading(true);
+      const deleted = await api.delete(`/${dragonId}`);
+      // eslint-disable-next-line no-unused-expressions
+      deleted
+        ? toast.success('Dragão deletado com sucesso')
+        : toast.error('Erro ao deletar o dragão');
+      removeDragon(dragonId);
+    } catch (error) {
+      toast.error('Erro ao deletar o dragão');
+    }
+  };
+
   useEffect(() => {
     getDragons();
   }, []);
@@ -92,7 +98,7 @@ const Home: FC = () => {
   return (
     <div className="homePageContainer">
       <h1>Dragões</h1>
-      <CreateOrEditDragon createDragon={createDragon} />
+      <CreateDragon createDragon={createDragon} />
       <ListDragons
         dragons={dragons}
         deleteDragon={deleteDragon}

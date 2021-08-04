@@ -1,14 +1,19 @@
-.editButton {
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: none;
     border: none;
     height: 40px;
     width: 40px;
     cursor: pointer;
     border-radius: 50%;
+    margin-left: 8px;
 
     &:hover {
         background-color: #0003;
     }
+
     & svg {
         width: 24px;
         height: 24px;

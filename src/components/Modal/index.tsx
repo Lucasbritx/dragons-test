@@ -1,27 +1,34 @@
-import React, { FC } from "react";
-import { MdClose } from 'react-icons/md'
-import "./modal.scss";
+/* eslint-disable import/extensions */
+import React, { FC } from 'react';
+import { MdClose } from 'react-icons/md';
+// eslint-disable-next-line import/no-unresolved
+import Button from '../Button';
+import './modal.scss';
 
 interface IModal {
-  handleClose?: any;
-  show?: boolean;
-  children?: any;
+  handleClose: ()=> void;
+  show: boolean;
+  children: any;
+  // eslint-disable-next-line react/require-default-props
   modalRef?: any;
 }
 
-const Modal: FC<IModal> = ({ handleClose, show, children, modalRef }) => { 
-  if(!show) {
+const Modal: FC<IModal> = ({
+  handleClose, show = false, children, modalRef,
+}: IModal) => {
+  if (!show) {
     return null;
   }
 
   return (
-    <div 
-    data-testid="modal"
-    className="modal display-block">
+    <div
+      data-testid="modal"
+      className="modal display-block"
+    >
       <section ref={modalRef} className="modal-main">
-        <button className="closeButton componetizar//////" type="button" onClick={handleClose}>
-          <MdClose/>
-        </button>
+        <Button className="closeButton" type="button" onClick={handleClose}>
+          <MdClose />
+        </Button>
         {children}
       </section>
     </div>
