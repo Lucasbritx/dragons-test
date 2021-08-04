@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/dragons-test/static/css/main.1a92f2e2.chunk.css",
+    "main.js": "/dragons-test/static/js/main.a5fc22c3.chunk.js",
+    "main.js.map": "/dragons-test/static/js/main.a5fc22c3.chunk.js.map",
+    "runtime-main.js": "/dragons-test/static/js/runtime-main.97054e91.js",
+    "runtime-main.js.map": "/dragons-test/static/js/runtime-main.97054e91.js.map",
+    "static/css/2.70420525.chunk.css": "/dragons-test/static/css/2.70420525.chunk.css",
+    "static/js/2.7a815a14.chunk.js": "/dragons-test/static/js/2.7a815a14.chunk.js",
+    "static/js/2.7a815a14.chunk.js.map": "/dragons-test/static/js/2.7a815a14.chunk.js.map",
+    "index.html": "/dragons-test/index.html",
+    "static/css/2.70420525.chunk.css.map": "/dragons-test/static/css/2.70420525.chunk.css.map",
+    "static/css/main.1a92f2e2.chunk.css.map": "/dragons-test/static/css/main.1a92f2e2.chunk.css.map",
+    "static/js/2.7a815a14.chunk.js.LICENSE.txt": "/dragons-test/static/js/2.7a815a14.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.97054e91.js",
+    "static/css/2.70420525.chunk.css",
+    "static/js/2.7a815a14.chunk.js",
+    "static/css/main.1a92f2e2.chunk.css",
+    "static/js/main.a5fc22c3.chunk.js"
+  ]
+}
