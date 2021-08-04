@@ -11,7 +11,6 @@ function App() {
   // implementar login, setToken no <Login />
 
   if (false) {
-    // eslint-disable-next-line react/jsx-filename-extension
     return <Login />;
   }
 
