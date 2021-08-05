@@ -1,8 +1,20 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import './styles.scss';
 
-const Button = ({ children, onClick }: any) => (
-  <button onClick={onClick} type="submit">
+interface Props {
+  children: React.ReactNode;
+  onClick?: (e?: any) => void;
+  className?: string;
+  type?: 'submit' | 'reset' | 'button';
+}
+
+const Button = ({
+  className, children, onClick, type,
+}: Props) => (
+  <button className={className} onClick={onClick} type={type}>
     {children}
   </button>
 );

@@ -8,10 +8,10 @@ import ListDragons from '../ListDragons';
 import './styles.scss';
 
 interface IDragon {
-  id: number;
+  id?: number;
   name: string;
-  createdAt: string;
   type: string;
+  createdAt?: string;
 }
 
 const Home: FC = () => {

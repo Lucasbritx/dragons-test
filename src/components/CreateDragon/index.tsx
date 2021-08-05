@@ -15,7 +15,7 @@ interface IDragon {
 }
 
 interface ICreateDragon {
-  createDragon: any;
+  createDragon: (dragon: IDragon) => any;
 }
 
 const CreateDragon: FC<ICreateDragon> = ({

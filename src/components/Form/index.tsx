@@ -7,7 +7,7 @@ import './index.scss';
 
 type FormProps = {
   // eslint-disable-next-line no-unused-vars
-  onSubmit: (event: any) => void;
+  onSubmit: (event: React.FormEvent) => void;
   dragonName: string;
   typeDragon: string;
 }

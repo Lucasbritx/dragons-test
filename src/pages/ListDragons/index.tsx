@@ -9,10 +9,10 @@ import EditDragon from '../../components/EditDragon';
 import './styles.scss';
 
 interface IDragon {
-  id: number;
+  id?: number;
   name: string;
-  createdAt: string;
   type: string;
+  createdAt?: string;
 }
 
 interface IListDragons {
@@ -34,7 +34,7 @@ const ListDragons: FC<IListDragons> = ({
     setConfirmDelete(false);
   };
 
-  const setDragonToDelete = (dragonIdToDelete: number) => {
+  const setDragonToDelete = (dragonIdToDelete?: number) => {
     setDragonId(dragonIdToDelete);
     setConfirmDelete(true);
   };

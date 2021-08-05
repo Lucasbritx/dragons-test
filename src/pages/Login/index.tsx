@@ -5,11 +5,6 @@ import React, { useState } from 'react';
 import { GrLogin } from 'react-icons/gr';
 import Button from '../../components/Button';
 
-// eslint-disable-next-line no-unused-vars
-interface ILogin {
-  setToken: any;
-}
-
 const Login = () => {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');

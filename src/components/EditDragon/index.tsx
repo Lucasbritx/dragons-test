@@ -5,18 +5,17 @@ import React, { FC, useState } from 'react';
 import { MdEdit } from 'react-icons/md';
 import Modal from '../../components/Modal';
 import Form from '../../components/Form';
-// import './styles.scss';
 import Button from '../../components/Button';
 
 interface IDragon {
-  id: number;
+  id?: number;
   name: string;
   type: string;
   createdAt?: string;
 }
 interface IEditDragon {
   dragon: IDragon;
-  editDragon: (dragonId: Number, dragon: IDragon) => IDragon;
+  editDragon: (dragon: IDragon, dragonId?: Number) => IDragon;
 }
 
 const EditDragon: FC<IEditDragon> = ({
@@ -43,7 +42,7 @@ const EditDragon: FC<IEditDragon> = ({
   const onSubmit = (event: any) => {
     const formData = new FormData(event.target);
     const formObject = Object.fromEntries(formData);
-    editDragon(dragon.id, getDragonJSON(formObject));
+    editDragon(getDragonJSON(formObject), dragon.id);
     setShowModal(false);
   };
 
