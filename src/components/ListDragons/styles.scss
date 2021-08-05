@@ -4,7 +4,7 @@
     border: 1px solid $base-color;
     padding: 0;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
-    padding: 16px;
+    padding: 8px 16px;
 }
 
 .listDragonItem {
@@ -13,6 +13,10 @@
     justify-content: space-between;
     padding: 8px 16px;
     border-bottom: 1px solid $base-color;
+
+    &:last-child {
+        border: none;
+    }
 
     & h3{
         font-size: 16px;
