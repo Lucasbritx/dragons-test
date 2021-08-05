@@ -2,7 +2,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import IoMdLogIn from 'react-icons/md';
+import { GrLogin } from 'react-icons/gr';
 import Button from '../../components/Button';
 
 // eslint-disable-next-line no-unused-vars
@@ -10,7 +10,7 @@ interface ILogin {
   setToken: any;
 }
 
-const Login = ({ setToken }: any) => {
+const Login = () => {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
 
@@ -22,10 +22,9 @@ const Login = ({ setToken }: any) => {
     }
   };
 
-  console.log(setToken);
   return (
-    <div className="login-wrapper">
-      <h1>Faça o seu login</h1>
+    <div className="loginWrapper">
+      <h1 className="loginTitle">Faça o seu login</h1>
       <form>
         <label>
           <p>Username</p>
@@ -46,7 +45,7 @@ const Login = ({ setToken }: any) => {
             onClick={login}
             type="button"
           >
-            <IoMdLogIn />
+            <GrLogin />
           </Button>
         </div>
       </form>
