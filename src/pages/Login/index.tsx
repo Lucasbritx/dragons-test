@@ -3,6 +3,7 @@
 /* eslint-disable import/no-unresolved */
 import React, { useState } from 'react';
 import { GrLogin } from 'react-icons/gr';
+import { toast, ToastContainer } from 'react-toastify';
 import Button from '../../components/Button';
 import './styles.scss';
 
@@ -15,11 +16,14 @@ const Login = () => {
     if (user === 'admin' && password === 'admin') {
       window.localStorage.setItem('user', 'admin');
       window.location.reload(false);
+    } else {
+      toast.error('Usuário ou senha incorretos');
     }
   };
 
   return (
     <div className="loginWrapper">
+      <ToastContainer />
       <div className="loginCard">
         <h1 className="loginTitle">Faça o seu login</h1>
         <form>
