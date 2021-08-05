@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable import/extensions */
 import React, { FC } from 'react';
 import { MdClose } from 'react-icons/md';
@@ -8,7 +9,7 @@ import './modal.scss';
 interface IModal {
   handleClose: ()=> void;
   show: boolean;
-  children: any;
+  children: JSX.Element,
   // eslint-disable-next-line react/require-default-props
   modalRef?: any;
 }

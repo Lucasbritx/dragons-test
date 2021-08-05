@@ -10,7 +10,7 @@ const Login = () => {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
 
-  const login = (e: any) => {
+  const login = (e: React.MouseEvent) => {
     e.preventDefault();
     if (user === 'admin' && password === 'admin') {
       window.localStorage.setItem('user', 'admin');
@@ -37,14 +37,13 @@ const Login = () => {
           <div className="divInput">
             <label htmlFor="password">
               Password
-
-              <input
-                id="password"
-                className="formInput"
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-              />
             </label>
+            <input
+              id="password"
+              className="formInput"
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+            />
           </div>
           <div>
             <Button

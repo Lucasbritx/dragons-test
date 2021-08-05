@@ -6,7 +6,7 @@ import './styles.scss';
 
 interface Props {
   children: React.ReactNode;
-  onClick?: (e?: any) => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   type?: 'submit' | 'reset' | 'button';
 }
