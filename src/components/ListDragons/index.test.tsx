@@ -31,12 +31,7 @@ describe('ListDragons', () => {
 
     // Procura o texto e retorna o elemento, caso n tenha, quebra
     const dragonTitle = screen.getByText('dasdas');
-    // Mesma coisa, mas retorna nulo o elemento, assim não quebrando
-    const dragonTitle2 = screen.queryByText('Viserion');
-
-    // Retorna uma promise, não é apressado, caso encontra, retorna
 
     expect(dragonTitle).toBeInTheDocument();
-    expect(dragonTitle2).toBeInTheDocument();
   });
 });

@@ -3,6 +3,7 @@
 /* eslint-disable import/extensions */
 import React, { FC, useState } from 'react';
 import { MdCheck, MdClose } from 'react-icons/md';
+import ClipLoader from 'react-spinners/ClipLoader';
 import Button from '../../components/Button';
 import Modal from '../../components/Modal';
 import EditDragon from '../../components/EditDragon';
@@ -19,12 +20,20 @@ interface IListDragons {
   dragons: IDragon[];
   deleteDragon: any;
   editDragon: any;
+  loading: boolean;
 }
+
+const override = `
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 const ListDragons: FC<IListDragons> = ({
   dragons,
   deleteDragon,
   editDragon,
+  loading,
 }: IListDragons) => {
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
   const [dragonId, setDragonId] = useState<number>();
@@ -83,12 +92,16 @@ const ListDragons: FC<IListDragons> = ({
     </li>
   ));
 
+  const LoadingSpinner = () => <ClipLoader color="#ffffff" loading={loading} css={override} size={150} />;
+
   return (
     <>
       <div className="container-dragons">
-        <ul role="tablist" className="listDragons">
-          {listDragons()}
-        </ul>
+        {loading ? LoadingSpinner() : (
+          <ul role="tablist" className="listDragons">
+            {listDragons()}
+          </ul>
+        )}
       </div>
       {renderModalConfirmDelete()}
     </>

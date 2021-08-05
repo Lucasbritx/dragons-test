@@ -88,6 +88,7 @@ const Home: FC = () => {
         toast.error('Erro ao deletar o dragão');
       }
       removeDragon(dragonId);
+      setLoading(false);
     } catch (error) {
       toast.error('Erro ao deletar o dragão');
     }
@@ -102,6 +103,7 @@ const Home: FC = () => {
       <h1>Dragões</h1>
       <CreateDragon createDragon={createDragon} />
       <ListDragons
+        loading={loading}
         dragons={dragons}
         deleteDragon={deleteDragon}
         editDragon={editDragon}
