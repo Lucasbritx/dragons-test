@@ -7,10 +7,9 @@ import Login from './pages/Login';
 import './styles/globalStyles.scss';
 
 function App() {
-  // const [token, setToken] = useState();
-  // implementar login, setToken no <Login />
+  const user = window.localStorage.getItem('user');
 
-  if (false) {
+  if (!user) {
     return <Login />;
   }
 
