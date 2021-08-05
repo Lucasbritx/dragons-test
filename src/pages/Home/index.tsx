@@ -2,10 +2,12 @@
 /* eslint-disable import/extensions */
 import React, { FC, useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import { IoMdExit } from 'react-icons/io';
 import api from '../../api/axios';
 import CreateDragon from '../../components/CreateDragon';
 import ListDragons from '../../components/ListDragons';
 import './styles.scss';
+import Button from '../../components/Button';
 
 interface IDragon {
   id?: number;
@@ -98,9 +100,22 @@ const Home: FC = () => {
     getDragons();
   }, []);
 
+  const logout = () => {
+    localStorage.removeItem('user');
+    window.location.reload(false);
+  };
+
   return (
     <div className="homePageContainer">
-      <h1>Dragões</h1>
+      <header>
+        <h1>Dragões</h1>
+        <Button
+          onClick={logout}
+          tooltip="Sair do sistema"
+        >
+          <IoMdExit fontSize={24} />
+        </Button>
+      </header>
       <CreateDragon createDragon={createDragon} />
       <ListDragons
         loading={loading}
