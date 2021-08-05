@@ -11,13 +11,20 @@ interface Props {
   className?: string;
   type?: 'submit' | 'reset' | 'button';
   tooltip: string;
+  disabled?: boolean;
 }
 
 const Button = ({
-  className, children, onClick, type, tooltip,
+  className, children, onClick, type, tooltip, disabled,
 }: Props) => (
   <>
-    <button data-tip={tooltip} className={className} onClick={onClick} type={type}>
+    <button
+      disabled={disabled}
+      data-tip={tooltip}
+      className={className}
+      onClick={onClick}
+      type={type}
+    >
       {children}
     </button>
     <ReactTooltip />

@@ -4,7 +4,7 @@
 import React, { FC, useState } from 'react';
 import { MdAdd } from 'react-icons/md';
 import Modal from '../../components/Modal';
-import Form from '../../components/Form';
+import DragonForm from '../../components/DragonForm';
 import Button from '../../components/Button';
 
 interface IDragon {
@@ -34,15 +34,8 @@ const CreateDragon: FC<ICreateDragon> = ({
     </Button>
   );
 
-  const getDragonJSON = (formObject: any): IDragon => ({
-    name: formObject.name,
-    type: formObject.type,
-  });
-
-  const onSubmit = (event: any) => {
-    const formData = new FormData(event.target);
-    const formObject = Object.fromEntries(formData);
-    createDragon(getDragonJSON(formObject));
+  const onSubmit = (dragon: any) => {
+    createDragon(dragon);
     setShowModal(false);
   };
 
@@ -51,7 +44,7 @@ const CreateDragon: FC<ICreateDragon> = ({
       show={showModal}
       handleClose={() => setShowModal(false)}
     >
-      <Form
+      <DragonForm
         dragonName=""
         typeDragon=""
         onSubmit={onSubmit}

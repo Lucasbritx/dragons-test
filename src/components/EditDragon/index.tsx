@@ -4,7 +4,7 @@
 import React, { FC, useState } from 'react';
 import { MdEdit } from 'react-icons/md';
 import Modal from '../../components/Modal';
-import Form from '../../components/Form';
+import DragonForm from '../../components/DragonForm';
 import Button from '../../components/Button';
 
 interface IDragon {
@@ -35,15 +35,8 @@ const EditDragon: FC<IEditDragon> = ({
     </Button>
   );
 
-  const getDragonJSON = (formObject: any): any => ({
-    name: formObject.name,
-    type: formObject.type,
-  });
-
-  const onSubmit = (event: any) => {
-    const formData = new FormData(event.target);
-    const formObject = Object.fromEntries(formData);
-    editDragon(getDragonJSON(formObject), dragon.id);
+  const onSubmit = (dragonEdited: any) => {
+    editDragon(dragonEdited, dragon.id);
     setShowModal(false);
   };
 
@@ -52,7 +45,7 @@ const EditDragon: FC<IEditDragon> = ({
       show={showModal}
       handleClose={() => setShowModal(false)}
     >
-      <Form
+      <DragonForm
         dragonName={dragon?.name}
         typeDragon={dragon?.type}
         onSubmit={onSubmit}
