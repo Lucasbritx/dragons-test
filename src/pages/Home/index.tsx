@@ -4,7 +4,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import api from '../../api/axios';
 import CreateDragon from '../../components/CreateDragon';
-import ListDragons from '../ListDragons';
+import ListDragons from '../../components/ListDragons';
 import './styles.scss';
 
 interface IDragon {
@@ -56,14 +56,15 @@ const Home: FC = () => {
     }
   };
 
-  const editDragon = async (dragonId: number, dragon: IDragon) => {
+  const editDragon = async (dragon: IDragon, dragonId: number) => {
     try {
       setLoading(true);
       const edited = await api.put(`/${dragonId}`, dragon);
-      // eslint-disable-next-line no-unused-expressions
-      edited
-        ? toast.success('Dragão editado com sucesso')
-        : toast.error('Erro ao editar o dragão');
+      if (edited) {
+        toast.success('Dragão editado com sucesso');
+      } else {
+        toast.error('Erro ao editar o dragão');
+      }
       getDragons();
     } catch (error) {
       toast.error('Erro ao editar o dragão');
@@ -81,10 +82,11 @@ const Home: FC = () => {
     try {
       setLoading(true);
       const deleted = await api.delete(`/${dragonId}`);
-      // eslint-disable-next-line no-unused-expressions
-      deleted
-        ? toast.success('Dragão deletado com sucesso')
-        : toast.error('Erro ao deletar o dragão');
+      if (deleted) {
+        toast.success('Dragão deletado com sucesso');
+      } else {
+        toast.error('Erro ao deletar o dragão');
+      }
       removeDragon(dragonId);
     } catch (error) {
       toast.error('Erro ao deletar o dragão');
