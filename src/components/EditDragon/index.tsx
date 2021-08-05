@@ -26,6 +26,7 @@ const EditDragon: FC<IEditDragon> = ({
 
   const renderButton = () => (
     <Button
+      tooltip="Editar dragão"
       onClick={() => {
         setShowModal(true);
       }}

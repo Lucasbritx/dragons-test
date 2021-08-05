@@ -44,8 +44,16 @@ const ListDragons: FC<IListDragons> = ({
       <div className="containerConfirmAction">
         <label>Deseja deletar esse dragão? </label>
         <div className="containerDeleteButtons">
-          <Button data-testid="delete-dragon-confirm-button" onClick={() => deleteDragonAndCloseModal()}><MdCheck /></Button>
           <Button
+            tooltip="Deletar"
+            data-testid="delete-dragon-confirm-button"
+            onClick={() => deleteDragonAndCloseModal()}
+          >
+            <MdCheck />
+
+          </Button>
+          <Button
+            tooltip="Cancelar"
             onClick={() => setConfirmDelete(false)}
           >
             <MdClose />
@@ -63,7 +71,14 @@ const ListDragons: FC<IListDragons> = ({
       </div>
       <div className="actionsContainer">
         <EditDragon dragon={dragon} editDragon={editDragon} />
-        <Button className="deleteButton" onClick={() => setDragonToDelete(dragon.id)}><MdClose /></Button>
+        <Button
+          tooltip="Deletar dragão"
+          className="deleteButton"
+          onClick={() => setDragonToDelete(dragon.id)}
+        >
+          <MdClose />
+
+        </Button>
       </div>
     </li>
   ));

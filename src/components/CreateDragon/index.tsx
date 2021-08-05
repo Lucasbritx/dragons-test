@@ -25,6 +25,7 @@ const CreateDragon: FC<ICreateDragon> = ({
 
   const renderButton = () => (
     <Button
+      tooltip="Criar dragão"
       onClick={() => {
         setShowModal(true);
       }}

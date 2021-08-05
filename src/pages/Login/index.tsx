@@ -51,6 +51,7 @@ const Login = () => {
           </div>
           <div>
             <Button
+              tooltip="Entrar"
               onClick={login}
               type="button"
             >

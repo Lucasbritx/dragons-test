@@ -27,7 +27,12 @@ const Modal: FC<IModal> = ({
       className="modal display-block"
     >
       <section ref={modalRef} className="modal-main">
-        <Button className="closeButton" type="button" onClick={handleClose}>
+        <Button
+          tooltip="Fechar"
+          className="closeButton"
+          type="button"
+          onClick={handleClose}
+        >
           <MdClose />
         </Button>
         {children}

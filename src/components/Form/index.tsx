@@ -58,7 +58,11 @@ const Form: FC<FormProps> = ({
             }}
           />
         </div>
-        <Button className="submitButton" type="submit">
+        <Button
+          tooltip="Salvar"
+          className="submitButton"
+          type="submit"
+        >
           <MdSave />
         </Button>
       </form>
